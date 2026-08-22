@@ -9,11 +9,11 @@ export function RootLayout() {
       <main className="flex-1 flex flex-col relative w-full mx-auto">
         <Outlet />
       </main>
-      <Footer />
+      {/* <Footer /> */}
       <BottomNav />
     </div>
   );
 }
 
 // Need to import Footer
-import { Footer } from './Footer';
+// import { Footer } from './Footer';

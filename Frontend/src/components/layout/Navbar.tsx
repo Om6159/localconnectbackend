@@ -12,8 +12,15 @@ export function Navbar() {
     { href: '/requests', label: 'Requests' },
   ];
 
+  const isHome = location.pathname === '/';
+
   return (
-    <nav className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-border">
+    <nav className={cn(
+      "w-full z-50 transition-colors",
+      isHome 
+        ? "absolute top-0 left-0 right-0 bg-transparent border-none"
+        : "sticky top-0 bg-background/80 backdrop-blur-md border-b border-border"
+    )}>
       <div className="max-w-[1440px] mx-auto px-4 md:px-section-1 lg:px-section-2 h-16 md:h-20 lg:h-24 flex items-center justify-between">
         
         {/* Left: Logo */}
@@ -24,16 +31,17 @@ export function Navbar() {
         {/* Center: Navigation */}
         <div className="hidden md:flex items-center justify-center gap-comp-3 shrink-0">
           {links.map((link) => (
-            <Link
-              key={link.href}
-              to={link.href}
-              className={cn(
-                "text-text-navigation transition-colors hover:text-primary focus-ring rounded-sm px-3 py-2 font-medium",
-                location.pathname === link.href ? "text-primary" : "text-muted-foreground"
-              )}
-            >
-              {link.label}
-            </Link>
+              <Link
+                key={link.href}
+                to={link.href}
+                className={cn(
+                  "text-text-navigation transition-colors hover:text-primary focus-ring rounded-sm px-3 py-2 font-bold",
+                  location.pathname === link.href ? "text-primary" : "text-muted-foreground"
+                )}
+                style={{ fontFamily: '"Google Sans", sans-serif' }}
+              >
+                {link.label}
+              </Link>
           ))}
         </div>
 
